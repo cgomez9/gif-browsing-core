@@ -26,6 +26,8 @@ Route::group(['middleware' => ['json.response']], function () {
     // Private routes
     Route::middleware('auth:api')->group(function () {
         Route::get('/logout', 'Api\AuthController@logout')->name('logout.api');
+        // Giphy API integration
+        Route::get('/search/{query}', 'Api\GiphyApiController@search')->name('search.api');
     });
 
 });

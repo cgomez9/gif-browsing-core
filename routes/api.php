@@ -28,6 +28,13 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/logout', 'Api\AuthController@logout')->name('logout.api');
         // Giphy API integration
         Route::get('/search/{query}', 'Api\GiphyApiController@search')->name('search.api');
+        // User's favorite GIF
+        Route::post('/favorite', 'Api\FavoriteGifController@store')->name('favorite.store.api');
+        Route::get('/favorite', 'Api\FavoriteGifController@index')->name('favorite.index.api');
+        Route::delete('/favorite/{favoriteId}', 'Api\FavoriteGifController@destroy')->name('favorite.destroy.api');
+        // User's search history
+        Route::post('/history', 'Api\HistoryController@store')->name('history.store.api');
+        Route::get('/history', 'Api\HistoryController@index')->name('history.index.api');
     });
 
 });

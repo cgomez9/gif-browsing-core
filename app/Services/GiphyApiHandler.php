@@ -53,7 +53,7 @@ class GiphyApiHandler implements GiphyApiInterface
      */
     public function get($id)
     {
-        return $this->httpClient->get("gifs/$id");
+        return $this->httpClient->get("gifs/$id")->getBody()->getContents();
     }
 
     /**
@@ -65,7 +65,7 @@ class GiphyApiHandler implements GiphyApiInterface
      */
     public function random(array $params = [ ])
     {
-        return $this->httpClient->get("gifs/random", $params);
+        return $this->httpClient->get("gifs/random", $params)->getBody()->getContents();
     }
 
 }

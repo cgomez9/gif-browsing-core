@@ -25,21 +25,27 @@ class GiphyApiController extends Controller
     public function search($query)
     {
         $result = $this->giphyApi->search($query, []);
-        $response = ['success' => true, 'result' => json_decode($result)];
 
-        return response($response, 200);
+        if ($result) {
+            $response = ['success' => true, 'result' => json_decode($result)];
+            return response($response, 200);
+        } else {
+            $response = ['success' => false, 'result' => []];
+            return response($response, 404)->setStatusCode(404, 'GIF not found');
+        }
     }
 
     public function getGif($id)
     {
         $result = $this->giphyApi->get($id);
+        dump($result);
 
         if ($result) {
             $response = ['success' => true, 'result' => json_decode($result)];
-            return response($response, 404)->setStatusCode(404, 'GIF not found');
+            return response($response, 200);
         } else {
             $response = ['success' => false, 'result' => []];
-            return response($response, 200);
+            return response($response, 404)->setStatusCode(404, 'GIF not found');
         }
     }
 }

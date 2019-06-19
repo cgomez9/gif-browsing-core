@@ -29,4 +29,17 @@ class GiphyApiController extends Controller
 
         return response($response, 200);
     }
+
+    public function getFavorite($id)
+    {
+        $result = $this->giphyApi->get($id);
+
+        if ($result) {
+            $response = ['success' => true, 'result' => json_decode($result)];
+            return response($response, 404)->setStatusCode(404, 'GIF not found');
+        } else {
+            $response = ['success' => false, 'result' => []];
+            return response($response, 200);
+        }
+    }
 }

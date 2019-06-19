@@ -175,7 +175,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\GiphyApiServiceProvider::class
+        App\Providers\GiphyApiServiceProvider::class,
+        Spatie\Cors\CorsServiceProvider::class
 
     ],
 

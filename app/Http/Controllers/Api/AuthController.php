@@ -44,11 +44,11 @@ class AuthController extends Controller
                 $token = $user->createToken('Laravel Password Grant Client')->accessToken;
                 return response(['success' => true, 'token' => $token], 200);
             } else {
-                return response(['success' => false, 'error' => 'The Password does not match'], 422);
+                return response('', 403)->setStatusCode(403, 'The Password does not match');
             }
 
         } else {
-            return response(['success' => false, 'error' => 'User does not exist'], 422);
+            return response('', 403)->setStatusCode(403, 'Email does not exist');
         }
 
     }

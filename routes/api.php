@@ -28,6 +28,7 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/logout', 'Api\AuthController@logout')->name('logout.api');
         // Giphy API integration
         Route::get('/search/{query}', 'Api\GiphyApiController@search')->name('search.api');
+        Route::get('/gif/{id}', 'Api\GiphyApiController@getGif')->name('getGif.api');
         // User's favorite GIF
         Route::post('/favorite', 'Api\FavoriteGifController@store')->name('favorite.store.api');
         Route::get('/favorite', 'Api\FavoriteGifController@index')->name('favorite.index.api');

@@ -30,7 +30,7 @@ class GiphyApiController extends Controller
         return response($response, 200);
     }
 
-    public function getFavorite($id)
+    public function getGif($id)
     {
         $result = $this->giphyApi->get($id);
 

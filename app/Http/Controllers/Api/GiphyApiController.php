@@ -22,7 +22,7 @@ class GiphyApiController extends Controller
         $this->giphyApi = $giphyApiHandler;
     }
 
-    public function search($query)
+    public function search($query, $limit)
     {
         $result = $this->giphyApi->search($query, []);
 
@@ -61,7 +61,7 @@ class GiphyApiController extends Controller
         }
     }
 
-    public function getTrendyGifs()
+    public function getTrendingGifs($limit)
     {
         $result = $this->giphyApi->trending();
 

@@ -17,30 +17,15 @@ The first time is going to download and build the containers so it's going to ta
 
 `docker-compose ps`
 
-You should have three containers up and running. In the next step, you need to enter the container and execute some PHP and Laravel commands to finish the set up. To enter to the container, use the following command in project's root:
+You should have three containers up and running. In the next step, you need to enter the container and execute some PHP and Laravel commands to finish the set up. Use the following commands in project's root:
 
-`docker-compose exec core-app bash`
+`docker-compose exec core-app php artisan migrate --seed`
 
-Once inside the container, you need to run the following four commands:
+This command is going to create the entire database structure and it is going to create the test user. The email is `test@gmail.com` and the password is `secret`.
 
-`composer install`
-
-This command it's going to install all project's dependencies.
-
-`php artisan migrate`
-
-This command is going to create the entire database structure.
-
-`php artisan passport:install --force`
+`docker-compose exec core-app php artisan passport:install --force`
 
 This command is going to install the credentials for the JWT authentication.
-
-`php artisan db:seed`
-
-This is going to create the test user. The credentials are: 
-
-email: test@gmail.com
-password: secret
 
 And this is it, you now have the core of the app up and running.
 

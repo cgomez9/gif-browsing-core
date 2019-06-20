@@ -26,6 +26,7 @@ class FavoriteGifController extends Controller
     {
         $favoriteGif = new FavoriteGif;
         $favoriteGif->gif_id = $request->get('gif_id');
+        $favoriteGif->keyword = $request->get('keyword');
         $favoriteGif->user_id = auth()->user()->getAuthIdentifier();
         $favoriteGif->save();
 

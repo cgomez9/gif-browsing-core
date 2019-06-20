@@ -17,6 +17,7 @@ class CreateFavoriteGifsTable extends Migration
             $table->bigIncrements('id');
             $table->string('gif_id');
             $table->integer('user_id');
+            $table->string('keyword');
             $table->timestamps();
         });
     }

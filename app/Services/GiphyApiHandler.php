@@ -65,7 +65,13 @@ class GiphyApiHandler implements GiphyApiInterface
      */
     public function getByIDs($ids)
     {
-        return $this->httpClient->get("gifs/$ids")->getBody()->getContents();
+        $params['ids'] = $ids;
+        $params = array_merge(
+            $this->httpClient->getConfig('query'),
+            $params
+        );
+
+        return $this->httpClient->get("gifs", ['query' => $params])->getBody()->getContents();
     }
 
     /**

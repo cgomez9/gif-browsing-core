@@ -63,7 +63,7 @@ class GiphyApiController extends Controller
 
     public function getTrendyGifs()
     {
-        $result = $this->giphyApi->trendy();
+        $result = $this->giphyApi->trending();
 
         if ($result) {
             $response = ['success' => true, 'result' => json_decode($result)];

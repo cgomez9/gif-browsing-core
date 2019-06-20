@@ -87,13 +87,13 @@ class GiphyApiHandler implements GiphyApiInterface
     }
 
      /**
-     * Returns a random GIF,
+     * Returns trending GIFs,
      *
      * @param array $params
      *
      * @return mixed
      */
-    public function trendy(array $params = [])
+    public function trending(array $params = [])
     {
         return $this->httpClient->get("gifs/trending", $params)->getBody()->getContents();
     }

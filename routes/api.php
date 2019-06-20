@@ -30,7 +30,7 @@ Route::group(['middleware' => ['json.response']], function () {
         Route::get('/gif/search/{query}', 'Api\GiphyApiController@search')->name('search.api');
         Route::get('/gif/{id}', 'Api\GiphyApiController@getGif')->name('get.gif.api');
         Route::get('/gif/multiple/{id}', 'Api\GiphyApiController@getGifs')->name('get.gifs.api');
-        Route::get('/gif/trendy', 'Api\GiphyApiController@getTrendyGifs')->name('trendy.gif.api');
+        Route::get('/gif/trending', 'Api\GiphyApiController@getTrendingGifs')->name('trending.gif.api');
         // User's favorite GIF
         Route::post('/favorite', 'Api\FavoriteGifController@store')->name('favorite.store.api');
         Route::get('/favorite', 'Api\FavoriteGifController@index')->name('favorite.index.api');

@@ -4,7 +4,7 @@ This is the core of the GIF Browsing app. It is a REST API connected to GIPHY's 
 
 ## Setting up the project
 
-First you need the following softwares installed:
+First you need the following software installed:
 
 - Docker
 - Docker Compose

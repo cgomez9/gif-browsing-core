@@ -45,6 +45,12 @@ COPY --chown=www:www . /var/www
 # Change current user to www
 USER www
 
+# Install dependencies and laravel commands
+RUN composer install \
+    && php artisan migrate --seed \
+    && php artisan passport:install --force
+
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
+
 CMD ["php-fpm"]

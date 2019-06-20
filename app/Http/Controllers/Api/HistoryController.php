@@ -12,7 +12,9 @@ class HistoryController extends Controller
     {
         $userId = auth()->user()->getAuthIdentifier();
 
-        return History::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+        $history = History::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+
+        return response($history, $history ? 200 : 404);
     }
 
     public function store(Request $request)

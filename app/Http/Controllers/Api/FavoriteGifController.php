@@ -15,7 +15,9 @@ class FavoriteGifController extends Controller
     {
         $userId = auth()->user()->getAuthIdentifier();
 
-        return FavoriteGif::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+        $favoriteGif = FavoriteGif::where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+
+        return response($favoriteGif, $favoriteGif ? 200 : 404);
     }
 
     /**

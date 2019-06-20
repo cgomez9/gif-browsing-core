@@ -33,12 +33,18 @@ class FavoriteGifController extends Controller
     }
 
     /**
-     * @param FavoriteGif $favoriteGif
+     * @param integer $gifId
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(FavoriteGif $favoriteGif)
+    public function destroy($gifId)
     {
+        $userId = auth()->user()->getAuthIdentifier();
+
+        $favoriteGif = FavoriteGif::where('user_id', $userId)
+            ->where('gif_id', $gifId)
+            ->firstOrFail();
+
         $favoriteGif->delete();
 
         return response(null, 204);

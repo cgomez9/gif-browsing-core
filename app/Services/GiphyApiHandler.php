@@ -51,9 +51,21 @@ class GiphyApiHandler implements GiphyApiInterface
      *
      * @return \Psr\Http\Message\ResponseInterface
      */
-    public function get($id)
+    public function getByID($id)
     {
         return $this->httpClient->get("gifs/$id")->getBody()->getContents();
+    }
+
+    /**
+     * Returns a GIF information by ids
+     *
+     * @param integer $ids
+     *
+     * @return \Psr\Http\Message\ResponseInterface
+     */
+    public function getByIDs($ids)
+    {
+        return $this->httpClient->get("gifs/$ids")->getBody()->getContents();
     }
 
     /**

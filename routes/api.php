@@ -29,6 +29,7 @@ Route::group(['middleware' => ['json.response']], function () {
         // Giphy API integration
         Route::get('/gif/search/{query}', 'Api\GiphyApiController@search')->name('search.api');
         Route::get('/gif/{id}', 'Api\GiphyApiController@getGif')->name('getGif.api');
+        Route::get('/gif/multiple/{id}', 'Api\GiphyApiController@getGifs')->name('getGifs.api');
         // User's favorite GIF
         Route::post('/favorite', 'Api\FavoriteGifController@store')->name('favorite.store.api');
         Route::get('/favorite', 'Api\FavoriteGifController@index')->name('favorite.index.api');

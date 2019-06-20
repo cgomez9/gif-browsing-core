@@ -22,7 +22,7 @@ class GiphyApiController extends Controller
         $this->giphyApi = $giphyApiHandler;
     }
 
-    public function search($query)
+    public function search($query, $limit)
     {
         $result = $this->giphyApi->search($query, []);
 
@@ -51,6 +51,19 @@ class GiphyApiController extends Controller
     public function getGifs($ids)
     {
         $result = $this->giphyApi->getByIDs($ids);
+
+        if ($result) {
+            $response = ['success' => true, 'result' => json_decode($result)];
+            return response($response, 200);
+        } else {
+            $response = ['success' => false, 'result' => []];
+            return response($response, 404)->setStatusCode(404, 'GIF not found');
+        }
+    }
+
+    public function getTrendingGifs($limit)
+    {
+        $result = $this->giphyApi->trending();
 
         if ($result) {
             $response = ['success' => true, 'result' => json_decode($result)];

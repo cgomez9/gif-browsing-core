@@ -36,6 +36,7 @@ class GiphyApiHandler implements GiphyApiInterface
     public function search($query, array $params = [])
     {
         $params['q'] = $query;
+        $params['limit'] = 1000;
         $params = array_merge(
             $this->httpClient->getConfig('query'),
             $params
@@ -84,6 +85,24 @@ class GiphyApiHandler implements GiphyApiInterface
     public function random(array $params = [ ])
     {
         return $this->httpClient->get("gifs/random", $params)->getBody()->getContents();
+    }
+
+     /**
+     * Returns trending GIFs,
+     *
+     * @param array $params
+     *
+     * @return mixed
+     */
+    public function trending(array $params = [])
+    {
+        $params['limit'] = 1000;
+        $params = array_merge(
+            $this->httpClient->getConfig('query'),
+            $params
+        );
+        
+        return $this->httpClient->get("gifs/trending", ['query' => $params])->getBody()->getContents();
     }
 
 }

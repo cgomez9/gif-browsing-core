@@ -8,5 +8,5 @@ return [
     |
     */
     'api_key'	=> env('GIPHY_API_KEY'),
-    'url'	=> env('GIPHY_URL') ? env('GIPHY_URL') : 'https://api.giphy.com/v1/'
+    'url'	=> env('GIPHY_URL')
 ];

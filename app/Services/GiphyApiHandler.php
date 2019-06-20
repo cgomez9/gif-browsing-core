@@ -86,4 +86,16 @@ class GiphyApiHandler implements GiphyApiInterface
         return $this->httpClient->get("gifs/random", $params)->getBody()->getContents();
     }
 
+     /**
+     * Returns a random GIF,
+     *
+     * @param array $params
+     *
+     * @return mixed
+     */
+    public function trendy(array $params = [])
+    {
+        return $this->httpClient->get("gifs/trending", $params)->getBody()->getContents();
+    }
+
 }

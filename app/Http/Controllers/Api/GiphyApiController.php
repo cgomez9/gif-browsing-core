@@ -60,4 +60,17 @@ class GiphyApiController extends Controller
             return response($response, 404)->setStatusCode(404, 'GIF not found');
         }
     }
+
+    public function getTrendyGifs()
+    {
+        $result = $this->giphyApi->trendy();
+
+        if ($result) {
+            $response = ['success' => true, 'result' => json_decode($result)];
+            return response($response, 200);
+        } else {
+            $response = ['success' => false, 'result' => []];
+            return response($response, 404)->setStatusCode(404, 'GIF not found');
+        }
+    }
 }

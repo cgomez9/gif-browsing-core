@@ -17,7 +17,13 @@ The first time is going to download and build the containers so it's going to ta
 
 `docker-compose ps`
 
-You should have three containers up and running. In the next step, you need to enter the container and execute some PHP and Laravel commands to finish the set up. Use the following commands in project's root:
+You should have three containers up and running. In the next step, you need to enter the container and execute some PHP and Laravel commands to finish the set up. Use the next command:
+
+`docker-compose exec core-app cp .env.examples .env`
+
+This command is going to create the environment file.
+
+Now use the following commands in project's root:
 
 `docker-compose exec core-app php artisan migrate --seed`
 

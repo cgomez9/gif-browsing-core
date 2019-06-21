@@ -48,9 +48,6 @@ USER www
 # Install dependencies
 RUN composer install
 
-# Copy environment
-RUN cat .env.example > .env
-
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 

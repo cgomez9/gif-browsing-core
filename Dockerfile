@@ -42,11 +42,17 @@ COPY . /var/www
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
 
+# Create files permissions
+RUN chown -R www:www /var/www
+
 # Change current user to www
 USER www
 
 # Install dependencies
 RUN composer install
+
+# Create env file
+RUN cat .env.example > .env
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
